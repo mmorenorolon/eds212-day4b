@@ -1,0 +1,60 @@
+---
+title: "r-exploring"
+author: "Melannie Moreno Rolon"
+format: html
+editor: visual
+---
+
+```{r}
+#load libraries
+library(GGally)
+library(skimr)
+library(palmerpenguins)
+library(ggplot2)
+library(tidyverse)
+```
+
+```{r}
+# look at penguins data
+view(penguins)
+```
+
+```{r}
+#view column names
+names(penguins)
+
+#check the dimensions of the dataframe
+dim(penguins)
+
+#get a summary
+summary(penguins)
+```
+
+```{r}
+# get a summary using skimr
+skimr::skim(penguins)
+```
+
+```{r}
+#print the first 6 rows
+head(penguins)
+
+#print the last 6 rows
+tail(penguins)
+```
+
+```{r}
+#make a pair plot
+GGally::ggpairs(penguins)
+```
+
+```{r}
+# Make a pairsplot with a select number of columns and color by species ----
+GGally::ggpairs(penguins, columns = 3:6, ggplot2::aes(colour = species))
+```
+
+```{r}
+#make a histogram of penguins flipper lengths
+ggplot(data = penguins, aes(x = flipper_length_mm, fill = species)) +
+  geom_histogram()
+```
